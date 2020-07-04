@@ -1,13 +1,15 @@
 <template>
   <v-app class="myApp">
     <my-header></my-header>
-    <v-main>hello guys</v-main>
+    <v-main>
+      <router-view></router-view>
+    </v-main>
     <my-footer></my-footer>
   </v-app>
 </template>
 
 <script lang="ts">
-import Header from " ./components/global/Header.vue";
+import Header from "./components/global/Header.vue";
 import Footer from "./components/global/Footer.vue";
 import Vue from "vue";
 
@@ -31,6 +33,11 @@ $primary-color-light: #ffffff;
 
 html {
   font-size: 62.5% !important;
+}
+
+.v-carousel__item .v-image__image--cover {
+  background-size: contain !important;
+  background-color: black;
 }
 
 .router-link-exact-active .router-link-active {
