@@ -19,7 +19,7 @@
       >
         <v-row class="fill-height" align="center" justify="center">
           <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Your Hair is Our Passion</strong>
+            <strong>Discover the best hair products in Nija and abroad</strong>
           </div>
           <br />
         </v-row>
@@ -31,7 +31,7 @@
       >
         <v-row class="fill-height" align="center" justify="center">
           <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Your Hair is Our Passion</strong>
+            <strong>Every coin you spend is worth the beauty you achieve</strong>
           </div>
           <br />
         </v-row>
@@ -42,7 +42,7 @@
       >
         <v-row class="fill-height" align="center" justify="center">
           <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Your Hair is Our Passion</strong>
+            <strong>At CC Hair World we give you the best ... only</strong>
           </div>
           <br />
         </v-row>
@@ -54,7 +54,7 @@
       >
         <v-row class="fill-height" align="center" justify="center">
           <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Your Hair is Our Passion</strong>
+            <strong>Beauty conjugated in the hair tense</strong>
           </div>
           <br />
         </v-row>
@@ -84,6 +84,8 @@
         </div>
       </div>
     </div>
+
+    <a-band></a-band>
   </section>
 </template>
 
@@ -91,12 +93,14 @@
 // @ is an alias to /src
 import Product from "@/components/ProductCard";
 import SearchSection from "@/components/SearchSection";
+import ABand from "@/components/AnouncementBand";
 
 export default {
   name: "Home",
   components: {
     product: Product,
-    "search-section": SearchSection
+    "search-section": SearchSection,
+    "a-band": ABand
   },
 
   data() {
@@ -180,7 +184,8 @@ $primary-color-light: #ffffff;
   }
 
   .more-utilities {
-    flex-basis: 30%;
+    flex-basis: 20%;
+    padding-right: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
