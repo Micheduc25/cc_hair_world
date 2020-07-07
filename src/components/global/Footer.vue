@@ -8,7 +8,7 @@
     </div>
 
     <div class="social-media">
-      <a href>
+      <a href="https://www.facebook.com/CC-Hair-World-101274064913350/" target="blank">
         <img width="35px" height="35px" src="../../assets/images/icons/facebook_2.svg" alt />
       </a>
       <a href>

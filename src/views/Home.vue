@@ -66,6 +66,30 @@
         <div class="top-products-title">More of our Products</div>
         <div class="more-utilities-main">
           <search-section></search-section>
+
+          <div class="more-products" style="display:flex; flex-direction:column;align-items:center">
+            <small-card title="Top eye lashes" id="wer4">
+              <img
+                src="../assets/images/home_products/slide4.jpeg"
+                alt="card background image"
+                slot="image"
+              />
+            </small-card>
+            <small-card title="Top Hair and wig accesories" id="wer4">
+              <img
+                src="../assets/images/home_products/slide2.jpeg"
+                alt="card background image"
+                slot="image"
+              />
+            </small-card>
+            <small-card title="Top Make Up" id="wer4">
+              <img
+                src="../assets/images/home_products/slide1.jpeg"
+                alt="card background image"
+                slot="image"
+              />
+            </small-card>
+          </div>
         </div>
       </div>
       <div class="top-prods">
@@ -94,13 +118,15 @@
 import Product from "@/components/ProductCard";
 import SearchSection from "@/components/SearchSection";
 import ABand from "@/components/AnouncementBand";
+import SmallCard from "@/components/SmallCard";
 
 export default {
   name: "Home",
   components: {
     product: Product,
     "search-section": SearchSection,
-    "a-band": ABand
+    "a-band": ABand,
+    "small-card": SmallCard
   },
 
   data() {
@@ -160,6 +186,7 @@ $primary-color-light: #ffffff;
       background-color: #666;
       .moving-text {
         z-index: 1;
+
         font-size: 1.6rem;
         color: $primary-color-light;
 

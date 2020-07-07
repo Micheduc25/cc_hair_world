@@ -171,6 +171,7 @@ $primary-color-light: #ffffff;
   border-right: 1px solid $primary-color;
   margin-top: 10px;
   font-size: 1.7rem;
+  margin-bottom: 20px;
 
   .search-input--title {
     font-size: 1.9rem;
@@ -221,11 +222,11 @@ $primary-color-light: #ffffff;
     .colors {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      // justify-content: flex-start;
 
       label {
         display: flex;
-        flex-basis: 30%;
+        // flex-basis: 30%;
         align-items: center;
         margin-right: 10px;
       }
@@ -250,7 +251,7 @@ $primary-color-light: #ffffff;
 
   .searchButton {
     display: flex;
-    // justify-content: center;
+    justify-content: center;
     margin-top: 20px;
     button {
       background-color: $primary-color;
@@ -258,6 +259,7 @@ $primary-color-light: #ffffff;
       padding: 10px 35px;
       border-radius: 10px;
       transition: 0.3s;
+      border: 1px solid transparent;
       &:hover {
         background: $primary-color-light;
         color: $primary-color;
