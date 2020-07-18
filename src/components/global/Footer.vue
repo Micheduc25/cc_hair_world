@@ -42,12 +42,10 @@
   </footer>
 </template>
 
-
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({});
 </script>
-
 
 <style lang="scss" scoped>
 $primary-color: #1e0c0c;
@@ -97,6 +95,12 @@ $primary-color-light: #ffffff;
     padding-top: 20px;
 
     justify-content: space-between;
+    @media (max-width: 564px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 1.2rem;
+    }
   }
 }
 </style>

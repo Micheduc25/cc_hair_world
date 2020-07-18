@@ -9,7 +9,9 @@
         type="text"
         placeholder="Enter product name or description"
       />
-      <span @click="clearSearchField" v-show="searchKey!=''?true:false">X</span>
+      <span @click="clearSearchField" v-show="searchKey != '' ? true : false"
+        >X</span
+      >
     </div>
 
     <div class="filter">
@@ -19,28 +21,32 @@
           style="width:max-content; margin-bottom:10px;margin-right:5px;"
           color="#1e0c0c"
           v-model="filterValues.hair"
-        ></v-simple-checkbox>Hair
+        ></v-simple-checkbox
+        >Hair
       </label>
       <label>
         <v-simple-checkbox
           style="width:max-content; margin-bottom:10px;margin-right:5px;"
           color="#1e0c0c"
           v-model="filterValues.eyeLashes"
-        ></v-simple-checkbox>Eye Lashes
+        ></v-simple-checkbox
+        >Eye Lashes
       </label>
       <label>
         <v-simple-checkbox
           style="width:max-content; margin-bottom:10px;margin-right:5px;"
           color="#1e0c0c"
           v-model="filterValues.hairProduct"
-        ></v-simple-checkbox>Hair Product
+        ></v-simple-checkbox
+        >Hair Product
       </label>
       <label>
         <v-simple-checkbox
           style="width:max-content; margin-bottom:10px;margin-right:5px;"
           color="#1e0c0c"
           v-model="filterValues.makeup"
-        ></v-simple-checkbox>Make Up
+        ></v-simple-checkbox
+        >Make Up
       </label>
     </div>
 
@@ -54,32 +60,44 @@
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="colorValues.red"
-          ></v-simple-checkbox>red
-          <div style="width:15px; height:15px;margin-left:3px; background-color:red"></div>
+          ></v-simple-checkbox
+          >red
+          <div
+            style="width:15px; height:15px;margin-left:3px; background-color:red"
+          ></div>
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="colorValues.brown"
-          ></v-simple-checkbox>brown
-          <div style="width:15px; height:15px;margin-left:3px; background-color:brown"></div>
+          ></v-simple-checkbox
+          >brown
+          <div
+            style="width:15px; height:15px;margin-left:3px; background-color:brown"
+          ></div>
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="colorValues.grey"
-          ></v-simple-checkbox>grey
-          <div style="width:15px; height:15px;margin-left:3px; background-color:grey"></div>
+          ></v-simple-checkbox
+          >grey
+          <div
+            style="width:15px; height:15px;margin-left:3px; background-color:grey"
+          ></div>
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="colorValues.golden"
-          ></v-simple-checkbox>golden
-          <div style="width:15px; height:15px;margin-left:3px; background-color:gold"></div>
+          ></v-simple-checkbox
+          >golden
+          <div
+            style="width:15px; height:15px;margin-left:3px; background-color:gold"
+          ></div>
         </label>
       </div>
     </div>
@@ -94,28 +112,32 @@
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="sizeValues.sm"
-          ></v-simple-checkbox>sm
+          ></v-simple-checkbox
+          >sm
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="sizeValues.md"
-          ></v-simple-checkbox>md
+          ></v-simple-checkbox
+          >md
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="sizeValues.xl"
-          ></v-simple-checkbox>xl
+          ></v-simple-checkbox
+          >xl
         </label>
         <label>
           <v-simple-checkbox
             style="width:max-content;margin-right:2px;"
             color="#1e0c0c"
             v-model="sizeValues.xxl"
-          ></v-simple-checkbox>xxl
+          ></v-simple-checkbox
+          >xxl
         </label>
       </div>
     </div>

@@ -3,8 +3,8 @@
     <div class="backg"></div>
     <div class="bgcolor"></div>
     <div class="superposed">
-      <div class="name">{{name}}</div>
-      <div class="description">{{description}}</div>
+      <div class="name">{{ name }}</div>
+      <div class="description">{{ description }}</div>
       <div class="see-product">
         <button class="see-product-button">see this product</button>
       </div>
@@ -55,6 +55,17 @@ $primary-color-light: #ffffff;
   overflow: hidden;
 
   cursor: pointer;
+
+  @media (max-width: 900px) {
+    & {
+      height: 300px;
+    }
+  }
+  @media (max-width: 776px) {
+    & {
+      height: 280px;
+    }
+  }
 
   &:hover .bgcolor {
     background-color: rgba(255, 255, 255, 0.4);

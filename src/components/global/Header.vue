@@ -16,7 +16,7 @@
       </div>-->
 
       <nav class="navigation-large">
-        <ul>
+        <ul id="small-menu" class="not-visible">
           <li>
             <router-link class="router-link" to="/">Home</router-link>
           </li>
@@ -29,7 +29,23 @@
           <li>
             <router-link class="router-link" to="/contact">Contact Us</router-link>
           </li>
+          <li>
+            <router-link
+              class="router-link auth"
+              :to="{name:'auth',params: { procedure: 'login' }}"
+              :exact="true"
+            >Login</router-link>
+          </li>
+
+          <li>
+            <router-link
+              class="router-link auth"
+              :to="{name:'auth',params: { procedure: 'signup' }}"
+              :exact="true"
+            >Sign Up</router-link>
+          </li>
         </ul>
+        <menu-icon @clicked="menuClicked"></menu-icon>
       </nav>
     </header>
     <div ref="progress" id="header-progress"></div>
@@ -37,17 +53,36 @@
 </template>
 
 <script lang="ts">
+import MenuIcon from "../special/MenuIcon";
 export default {
+  components: {
+    "menu-icon": MenuIcon
+  },
   data() {
     return {
       searchKey: "",
       scrollPosition: 0,
-      scrollingDown: false
+      scrollingDown: false,
+      menuVisible: false
     };
   },
 
+  methods: {
+    menuClicked() {
+      const menu = document.getElementById("small-menu");
+      // const btn = document.getElementById("my-menu-icon");
+      if (menu != null) {
+        menu.classList.toggle("not-visible");
+        menu.classList.toggle("visible");
+
+        this.menuVisible = !this.menuVisible;
+        console.log(this.menuVisible);
+      }
+    }
+  },
+
   watch: {
-    scrollPosition(newVal, oldVal) {
+    scrollPosition(newVal: number, oldVal: number) {
       if (newVal > oldVal) {
         //scrolling down
         this.scrollingDown = true;
@@ -64,6 +99,15 @@ export default {
     window.onload = () => {
       const header = document.getElementById("header-and-progress");
       const home = document.getElementById("app-home");
+
+      document.documentElement.addEventListener("click", () => {
+        if (this.menuVisible === true) {
+          const btn = document.getElementsByClassName("btn")[0];
+          btn.classList.toggle("active");
+          btn.classList.toggle("not-active");
+          this.menuClicked();
+        }
+      });
 
       window.addEventListener("scroll", () => {
         this.scrollPosition = window.scrollY;
@@ -126,6 +170,10 @@ $primary-color: #1e0c0c;
     font-size: 1.5rem;
     box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.3);
 
+    @media (max-width: 700px) {
+      padding: 10px 2px 10px 20px;
+    }
+
     .logo {
       display: flex;
       align-items: center;
@@ -144,33 +192,104 @@ $primary-color: #1e0c0c;
       background-color: white;
     }
 
-    .navigation-large ul {
-      list-style: none;
-      margin-block-start: 0em;
-      margin-block-end: 0em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
-      padding-inline-start: 0px;
-      display: flex;
-      align-items: center;
-      height: 100%;
+    .navigation-large {
+      ul {
+        list-style: none;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 0px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        transition: 0.5s;
 
-      li:not(:last-child) {
-        margin-right: 30px;
+        li:not(:last-child) {
+          margin-right: 20px;
+        }
+
+        li {
+          .router-link {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+
+            transition: 0.3s;
+
+            &.auth {
+              padding: 10px 5px;
+            }
+
+            @media (max-width: 828px) {
+              padding: 10px 10px;
+            }
+          }
+
+          .router-link-exact-active.router-link-active {
+            text-decoration: underline !important;
+            text-decoration-color: white !important;
+          }
+        }
+
+        @media (max-width: 700px) {
+          & {
+            &.not-visible {
+              height: 0;
+              // padding: 0;
+            }
+            &.visible {
+              height: 260px;
+              // padding: 5px 10px 10px 10px;
+            }
+            overflow-y: hidden;
+
+            z-index: 5;
+            position: absolute;
+            width: 100%;
+            top: 100%;
+            right: 0;
+            flex-direction: column;
+            background-color: #1e0c0c;
+            align-items: center;
+
+            li:not(:last-child) {
+              margin-right: 0px;
+              // border-bottom: 1px solid white;
+              margin-bottom: 10px;
+            }
+
+            li {
+              width: 100%;
+
+              .router-link {
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 70%;
+
+                padding: 0px 0px;
+                padding: 5px 0;
+
+                border-radius: 5px;
+              }
+
+              .router-link-exact-active.router-link-active {
+                text-decoration: none !important;
+                text-decoration-color: none !important;
+                background-color: white !important;
+                color: $primary-color !important;
+              }
+            }
+          }
+        }
       }
 
-      li {
-        .router-link {
-          padding: 10px 30px;
-          border-radius: 5px;
-
-          transition: 0.3s;
-        }
-
-        .router-link-exact-active.router-link-active {
-          text-decoration: underline !important;
-          text-decoration-color: white !important;
-        }
+      @media (max-width: 700px) {
+        position: relative;
+        width: 40%;
       }
     }
   }

@@ -1,7 +1,9 @@
 <template>
-  <div
-    :class="classes"
-  >{{showHours?hours:null}}:{{showMinutes?minutes:null}}:{{showSeconds?seconds: null}}</div>
+  <div :class="classes">
+    {{ showHours ? hours : null }}:{{ showMinutes ? minutes : null }}:{{
+    showSeconds ? seconds : null
+    }}
+  </div>
 </template>
 <script>
 export default {
@@ -24,13 +26,13 @@ export default {
     showSeconds: { default: true }
   },
   mounted() {
-    console.log("in mounted");
+    // console.log("in mounted");
     // const app = this;
     this.timeTotal = this.totalTime;
     // window.onload = () => {};
     this.timeOutRef = setInterval(() => {
       this.timeTotal -= 1;
-      console.log("timeTotal is now", this.timeTotal);
+      // console.log("timeTotal is now", this.timeTotal);
     }, 1000);
   },
   computed: {
@@ -57,5 +59,4 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>
