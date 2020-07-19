@@ -1,18 +1,26 @@
 <template>
   <div class="formInput">
-    <div class="formInput__label">{{label}}</div>
+    <div class="formInput__label">{{ label }}</div>
     <div class="formInput__content">
       <input
         class="formInput__input"
         :placeholder="placeholder"
         :type="inputType"
+        :disabled="disabled"
         v-model="inputValue"
       />
 
-      <div @click="togglePasswordView" class="passwordInput-eye" v-if="isPasswordInput">
+      <div
+        @click="togglePasswordView"
+        class="passwordInput-eye"
+        v-if="isPasswordInput"
+      >
         <i v-if="!showPassWord" class="fa fa-eye" aria-hidden="true"></i>
         <i v-else class="fa fa-eye-slash" aria-hidden="true"></i>
       </div>
+    </div>
+    <div class="error-messages">
+      <template v-for="err in errList">{{ err }}</template>
     </div>
   </div>
 </template>
@@ -25,13 +33,19 @@ export default Vue.extend({
   props: {
     type: String,
     label: String,
-    placeholder: String
+    placeholder: String,
+    errList: Array,
+    disabled: Boolean,
+    defaultValue: {
+      default: "",
+      type: String,
+    },
   },
 
   data() {
     return {
       showPassWord: false,
-      inputValue: ""
+      inputValue: "",
     };
   },
 
@@ -43,20 +57,30 @@ export default Vue.extend({
       if (this.type === "password" && this.showPassWord) {
         return "text";
       } else return this.type;
-    }
+    },
   },
 
   watch: {
     inputValue(newVal) {
-      this.$emit("changed", newVal);
-    }
+      this.$emit("inputChanged", newVal);
+    },
   },
 
   methods: {
     togglePasswordView() {
       this.showPassWord = !this.showPassWord;
+    },
+  },
+
+  mounted() {
+    this.$parent.$on("formSubmited", () => {
+      this.inputValue = "";
+    });
+
+    if (this.defaultValue != "") {
+      this.inputValue = this.defaultValue;
     }
-  }
+  },
 });
 </script>
 
@@ -84,6 +108,11 @@ export default Vue.extend({
         outline: none;
       }
     }
+  }
+
+  .error-messages {
+    color: red;
+    font-size: 1.3rem;
   }
 }
 </style>

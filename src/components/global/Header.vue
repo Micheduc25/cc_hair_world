@@ -3,7 +3,12 @@
     <header id="header" class="app-header">
       <div class="logo">
         <router-link to="/">
-          <img width="50px" height="50px" src="../../assets/images/cc_logo.jpg" alt="logo" />
+          <img
+            width="50px"
+            height="50px"
+            src="../../assets/images/cc_logo.jpg"
+            alt="logo"
+          />
         </router-link>
         <span>CC-HairWorld</span>
       </div>
@@ -21,28 +26,45 @@
             <router-link class="router-link" to="/">Home</router-link>
           </li>
           <li>
-            <router-link class="router-link" to="/products">Our Products</router-link>
+            <router-link class="router-link" to="/products"
+              >Our Products</router-link
+            >
           </li>
           <li>
             <router-link class="router-link" to="/about">About Us</router-link>
           </li>
           <li>
-            <router-link class="router-link" to="/contact">Contact Us</router-link>
+            <router-link class="router-link" to="/contact"
+              >Contact Us</router-link
+            >
           </li>
-          <li>
+          <li v-show="showSignUp">
             <router-link
               class="router-link auth"
-              :to="{name:'auth',params: { procedure: 'login' }}"
+              :to="{ name: 'auth', params: { procedure: 'login' } }"
               :exact="true"
-            >Login</router-link>
+              >Login</router-link
+            >
           </li>
 
-          <li>
+          <li v-show="showSignUp">
             <router-link
               class="router-link auth"
-              :to="{name:'auth',params: { procedure: 'signup' }}"
+              :to="{ name: 'auth', params: { procedure: 'signup' } }"
               :exact="true"
-            >Sign Up</router-link>
+              >Sign Up</router-link
+            >
+          </li>
+
+          <li v-show="!showSignUp">
+            <router-link
+              id="account-link"
+              class="router-link"
+              :to="'/profile'"
+              :exact="true"
+            >
+              <i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
+            </router-link>
           </li>
         </ul>
         <menu-icon @clicked="menuClicked"></menu-icon>
@@ -54,17 +76,22 @@
 
 <script lang="ts">
 import MenuIcon from "../special/MenuIcon";
+import { mapGetters } from "vuex";
 export default {
   components: {
-    "menu-icon": MenuIcon
+    "menu-icon": MenuIcon,
   },
   data() {
     return {
       searchKey: "",
       scrollPosition: 0,
       scrollingDown: false,
-      menuVisible: false
+      menuVisible: false,
     };
+  },
+
+  computed: {
+    ...mapGetters(["showSignUp"]),
   },
 
   methods: {
@@ -78,7 +105,7 @@ export default {
         this.menuVisible = !this.menuVisible;
         console.log(this.menuVisible);
       }
-    }
+    },
   },
 
   watch: {
@@ -92,7 +119,7 @@ export default {
       } else {
         //at same spot
       }
-    }
+    },
   },
 
   mounted() {
@@ -137,7 +164,7 @@ export default {
         home.style.marginTop = `${header.offsetHeight}px`;
       }
     };
-  }
+  },
 };
 </script>
 
@@ -190,6 +217,15 @@ $primary-color: #1e0c0c;
     .router-link:hover {
       color: $primary-color !important;
       background-color: white;
+    }
+
+    #account-link {
+      color: white;
+      background: $primary-color;
+      &:hover {
+        color: white !important;
+        background: $primary-color;
+      }
     }
 
     .navigation-large {

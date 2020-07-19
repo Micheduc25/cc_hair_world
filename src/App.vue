@@ -11,6 +11,8 @@
 <script lang="ts">
 import Header from "./components/global/Header.vue";
 import Footer from "./components/global/Footer.vue";
+import { Auth } from "@/firebase/auth";
+import { mapActions } from "vuex";
 import Vue from "vue";
 
 export default Vue.extend({
@@ -18,12 +20,48 @@ export default Vue.extend({
 
   components: {
     "my-header": Header,
-    "my-footer": Footer
+    "my-footer": Footer,
   },
 
   data: () => ({
     //
-  })
+  }),
+
+  methods: {
+    ...mapActions(["set_show_signup"]),
+  },
+
+  mounted() {
+    const user = Auth.currentUser;
+    if (user === null) {
+      const email = localStorage.getItem("email");
+      const password = localStorage.getItem("password");
+
+      if (email != null && password != null) {
+        Auth.signInWithEmailAndPassword(email, password).then(
+          () => {
+            this.set_show_signup(false);
+            console.log("user successfully signed in");
+          },
+          (err) => {
+            console.log("could not sign in user ", err);
+            this.set_show_signup(true);
+          }
+        );
+      } else {
+        this.set_show_signup(true);
+        console.log(
+          " not good ohhhhhh user email is ",
+          email,
+          " password is ",
+          password
+        );
+      }
+    } else {
+      this.set_show_signup(false);
+      console.log("user already signed in oh");
+    }
+  },
 });
 </script>
 
